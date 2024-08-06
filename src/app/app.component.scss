@@ -1,0 +1,52 @@
+
+
+.logoImg{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-left: 20px;
+}
+
+.contact{
+    padding: 6px 20px;
+    font-size: 20px;
+    /* background-color: rgba(0, 136, 169, 1); */
+    background-color: orange;
+    border: none;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: all 1s ease 0s;
+    margin: 0  10px;
+}
+
+.contact:hover{
+    background-color: rgba(0, 136, 169, 0.8);
+    color: white;
+    font-size: 20px;
+}
+
+
+@media screen and (max-width : 990px){
+    .contact{
+        margin-top: 5px;
+        width: 30%;
+    }
+}
+
+
+.footer{
+    bottom: 0;
+    height: 50px;
+    background-color: white;
+    position: fixed;
+    width: 100%;
+}
+
+
+
+a{
+    font-size: 20px;
+}
+
+

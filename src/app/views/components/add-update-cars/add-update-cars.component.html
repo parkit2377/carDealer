@@ -1,0 +1,83 @@
+<div class="container" style="overflow: hidden;">
+    <div class="row">
+        <div class="col">
+           <h2 *ngIf = "!carEditOption"> Add Cars </h2>
+           <h2 *ngIf = "carEditOption"> Edit Cars </h2>
+           <h4 >All Fields are mandatory</h4>
+        </div>
+        
+        <div class="col" > <button type="button" class="btn-close" aria-label="Close" (click) = "onCancel()" style="float: right; margin:13px 10px 0 0  ;"></button></div>
+    </div>
+    <hr>
+    <form [formGroup] = "newCarForm">
+    <div class="container">
+        <div class="row mt-3">
+            <div class="col">
+                <label for="">Name</label>
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" formControlName = "name" name="" id="" placeholder="Car's Name">
+                <div *ngIf = "name && name.invalid && (name.touched || name.dirty)">
+                    <span style="color: red;">Field is Required</span>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col">
+                <label for="">Model</label>
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" formControlName = "model" placeholder="Model" name="" id="">
+                <div *ngIf = "newCarForm.get('model')?.invalid && (newCarForm.get('model')?.touched || newCarForm.get('model')?.dirty)">
+                    <span style="color: red;">Field is Required</span>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col">
+                <label for="">Brand</label>
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" formControlName = "brand" placeholder="Brand" name="" id="">
+                <div *ngIf = "newCarForm.get('brand')?.invalid && (newCarForm.get('brand')?.touched || newCarForm.get('brand')?.dirty)">
+                    <span style="color: red;">Field is Required</span>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col">
+                <label for="">Color</label>
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" formControlName = "color" placeholder="Color" name="" id="">
+                <div *ngIf = "newCarForm.get('color')?.invalid && (newCarForm.get('color')?.touched || newCarForm.get('color')?.dirty)">
+                    <span style="color: red;">Field is Required</span>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col">
+                <label for="">Price</label>
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" formControlName = "price" placeholder="Price" name="" id="">
+                <div *ngIf = "newCarForm.get('price')?.invalid && (newCarForm.get('price')?.touched || newCarForm.get('price')?.dirty)">
+                   <div *ngIf = "newCarForm.get('price')?.errors?.required"> 
+                    <span style="color: red;">Field is Required</span>
+                   </div>
+                    <div *ngIf = "newCarForm.get('price')?.hasError('pattern')">
+                        <span style="color: red;">Please enter a valid number</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+    <div class="row mt-3">
+        <div class="col" >
+            <button  *ngIf = "!carEditOption" class="btn btn-primary" (click) = "addNewCarFunc()" [disabled] = "!newCarForm.valid">+ Add</button>
+            <button *ngIf = "carEditOption" class="btn btn-primary" (click) = "editCarFunc()" [disabled] = "!newCarForm.valid">Edit</button>
+            <button class="btn btn-danger" (click) = "onCancel()">Cancel</button>
+    </div>
+    </div>
+    </div>

@@ -1,0 +1,112 @@
+<div class="container" style="overflow: hidden;">
+<div class="row">
+    <div class="col">
+       <h2 *ngIf = "!ifEditDealer"> Add Dealer </h2>
+       <h2 *ngIf = "ifEditDealer"> Edit Dealer </h2>
+       <h4 *ngIf = "!ifEditDealer">All Fields are mandatory</h4>
+    </div>
+    <div class="col" > <button type="button" class="btn-close" aria-label="Close" (click) = "onCancel()" style="float: right; margin:13px 10px 0 0  ;"></button></div>
+</div>
+<hr>
+<form [formGroup] = "newDealerForm">
+<div class="container">
+    <div class="row mt-3">
+        <div class="col">
+            <label for="">Dealer's Name</label>
+        </div>
+        <div class="col">
+            <input type="text" class="form-control" formControlName = "dealerName" name="" id="" placeholder="Dealer's Name">
+            <div *ngIf = "newDealerForm.get('dealerName')?.invalid && (newDealerForm.get('dealerName')?.touched || newDealerForm.get('dealerName')?.dirty)">
+                <span style="color: red;">Field is Required</span>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3" formGroupName = "location">
+        <div class="col-6">
+            <label for="">Location</label>
+        </div>
+        <div class="col-3">
+            <input type="text" class="form-control" formControlName = "longitude" placeholder="Longitude" name="" id="">
+            <div *ngIf = "newDealerForm.get('longitude')?.invalid && (newDealerForm.get('longitude')?.touched || newDealerForm.get('longitude')?.dirty)">
+                <span style="color: red;">Field is Required</span>
+            </div>
+            </div>
+
+            <div class="col-3">
+                <input type="text" class="form-control" formControlName = "latitude" placeholder="Latitude" name="" id="">
+                <div *ngIf = "newDealerForm.get('latitude')?.invalid && (newDealerForm.get('latitude')?.touched || newDealerForm.get('latitude')?.dirty)">
+                    <span style="color: red;">Field is Required</span>
+                </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col">
+            <label for="">Total Budget</label>
+        </div>
+        <div class="col">
+            <input type="text" class="form-control" formControlName = "totalBudget" placeholder="Total Budget" name="" id="">
+            <div *ngIf = "newDealerForm.get('totalBudget')?.invalid && (newDealerForm.get('totalBudget')?.touched || newDealerForm.get('totalBudget')?.dirty)">
+                <div *ngIf = "newDealerForm.get('totalBudget')?.errors?.required">
+                    <span style="color: red;">Field is Required</span>
+                </div>
+                    
+            <div *ngIf = "newDealerForm.get('totalBudget')?.hasError('pattern') ">
+                <span style="color: red;">Please enter a valid number</span>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col">
+            <label for="">Remaining Budget</label>
+        </div>
+        <div class="col">
+            <input type="text" class="form-control" formControlName = "remainingBudget" placeholder="Remaining Budget" name="" id="">
+            <div *ngIf = "newDealerForm.get('remainingBudget')?.invalid && (newDealerForm.get('remainingBudget')?.touched || newDealerForm.get('remainingBudget')?.dirty)">
+                <div *ngIf = "newDealerForm.get('remainingBudget')?.errors?.required">
+                    <span style="color: red;">Field is Required</span>
+                </div>
+                <div *ngIf = "newDealerForm.get('remainingBudget')?.hasError('pattern')">
+                    <span style="color: red;">Please enter a valid number</span>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+
+    <div formGroupName = "owner">
+    <div class="row mt-3">
+        <div class="col">
+            <label for="">First Name</label>
+        </div>
+        <div class="col">
+            <input type="text" class="form-control" formControlName = "firstName" placeholder="First Name" name="" id="">
+            <div *ngIf = "newDealerForm.get('firstName')?.invalid && (newDealerForm.get('firstName')?.touched || newDealerForm.get('firstName')?.dirty)">
+                <span style="color: red;">Field is Required</span>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col">
+            <label for="">Last Name</label>
+        </div>
+        <div class="col">
+            <input type="text" class="form-control" formControlName = "lastName" placeholder="Last Name" name="" id="">
+            <div *ngIf = "newDealerForm.get('lastName')?.invalid && (newDealerForm.get('lastName')?.touched || newDealerForm.get('lastName')?.dirty)">
+                <span style="color: red;">Field is Required</span>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</form>
+<div class="row mt-3 mb-3">
+    <div class="col" >
+        <button *ngIf = "!ifEditDealer" class="btn btn-primary" (click) = "addDealerFunc()" [disabled] = "!newDealerForm.valid">+ Add</button>
+        <button *ngIf = "ifEditDealer" class="btn btn-primary" (click) = "editDealerFunc()" [disabled] = "!newDealerForm.valid">Edit</button>
+        <button class="btn btn-danger" (click) = "onCancel()">Cancel</button>
+</div>
+</div>
+</div>
